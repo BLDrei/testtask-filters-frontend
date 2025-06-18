@@ -33,7 +33,7 @@
 </script>
 
 {#await formPropertiesPromise then formProperties}
-  <form bind:this={formElem} class:was-validated={wasFormValidationTriggered} onsubmit={e => e.preventDefault()}>
+  <form class="container-sm" bind:this={formElem} class:was-validated={wasFormValidationTriggered} onsubmit={e => e.preventDefault()}>
     <Field label="Filter name" labelFor="filterName">
       {#snippet fieldContent()}
         <TextInput
@@ -49,6 +49,8 @@
         <CriteriaRowDuplicate bind:this={criteriasDuplicateElem} formProperties={formProperties}/>
       {/snippet}
     </Field>
+
+    <hr/>
 
     <div class="row justify-content-between mt-3">
       <div class="col-auto">

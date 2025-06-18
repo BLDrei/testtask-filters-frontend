@@ -59,7 +59,7 @@
 
 {#each rows as row, i}
   <div class="row duplicate-row g-2 mb-2">
-    <div class="col-md-3">
+    <div class={rows.length > 1 ? 'col-md-3' : 'col-md-4'}>
       <Dropdown
           name="valueType"
           bind:this={row.valueTypeElem}
@@ -68,7 +68,7 @@
           selectFirst={true}
       />
     </div>
-    <div class="col-md-3">
+    <div class={rows.length > 1 ? 'col-md-3' : 'col-md-4'}>
       <Dropdown
           name="comparingCondition"
           bind:this={row.comparingConditionElem}
@@ -79,7 +79,7 @@
           )}
       />
     </div>
-    <div class="col-md-3">
+    <div class={rows.length > 1 ? 'col-md-3' : 'col-md-4'}>
       {#if row.valueType === 'amount'}
         <NumericInput
             bind:this={row.numericValueElem}
@@ -102,22 +102,23 @@
       {/if}
     </div>
 
-    <div class="col-md-2 offset-1">
-      <button
-          class="btn btn-danger"
-          type="button"
-          onclick={() => removeRow(i)}
-          disabled={rows.length <= 1}>
-        {Labels.get('remove-row')}
-      </button>
-    </div>
+    {#if rows.length > 1}
+      <div class="col-md-2 offset-md-1">
+        <button
+            class="btn btn-danger"
+            type="button"
+            onclick={() => removeRow(i)}>
+          {Labels.get('remove-row')}
+        </button>
+      </div>
+    {/if}
   </div>
 {/each}
 
-<div class="row justify-content-center">
-  <div class="col-md-5">
+<div class="row">
+  <div class="col-md-12 flex">
     <button class="btn btn-primary" type="button" onclick={addRow}>
-      Add row
+      Add criteria
     </button>
   </div>
 </div>
