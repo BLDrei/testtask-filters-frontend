@@ -1,3 +1,8 @@
+### To simply check out how it works
+
+```npm install```
+```npm run dev```
+
 # Svelte + Vite
 
 This template should help get you started developing with Svelte in Vite.
